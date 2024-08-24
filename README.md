@@ -90,4 +90,10 @@ There are few options to deploy the stack:
 
 ![image](https://github.com/user-attachments/assets/41050135-34ef-40fd-af4f-93f16c4bfaa4)
 
+using port-forward when the container is running :
+
+![תמונה](https://github.com/user-attachments/assets/e4580ebe-5c5a-409f-92fb-aac1e1271a47)
+
+
+
 
