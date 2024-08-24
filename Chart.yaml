@@ -1,0 +1,14 @@
+apiVersion: v2
+name: dig-chart
+description: An umbrella chart for backend, frontend, and Postgres
+version: 0.0.1
+dependencies:
+  - name: backend-chart
+    version: 0.0.1
+    repository: "file://charts/backend-chart"
+  - name: frontend-chart
+    version: 0.0.3
+    repository: "file://charts/frontend-chart"
+  - name: postgresql
+    version: 15.5.23
+    repository: "https://charts.bitnami.com/bitnami"

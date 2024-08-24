@@ -1,0 +1,7 @@
+postgresql:
+  persistence:
+    enabled: true
+    storageClass: "standard"  # Replace with your Kubernetes storage class
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi

@@ -1,0 +1,4 @@
+replicaCount: 1
+image: yossisht11/digbackend:0.0.2
+postgres:
+  dbName: "dig"

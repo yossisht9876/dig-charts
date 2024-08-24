@@ -1,0 +1,18 @@
+image:
+  repository: digbackend
+  tag: "0.0.5"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+
+resources: {}
+
+persistence:
+  enabled: true
+  accessModes:
+    - ReadWriteOnce
+  size: 8Gi
+  storageClass: "standard"
+  mountPath: /var/lib/postgresql/data

@@ -1,0 +1,5 @@
+postgresql:
+  persistence:
+    enabled: true
+    size: 8Gi
+    storageClass: "gp2"

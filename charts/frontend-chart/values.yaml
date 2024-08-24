@@ -1,0 +1,38 @@
+replicaCount: 1
+
+image:
+  repository: yossisht11/digfrontend:0.0.2
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 80
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: digforntend.local
+      paths: []
+  tls: []
+
+resources: {}
+nodeSelector: {}
+tolerations: []
+affinity: []
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  mountPath: /data
+  storageClass: ""
+
+postgresql:
+  enabled: true
+  image: postgres:latest
+  persistence:
+    enabled: true
+    size: 1Gi
+    storageClass: ""
