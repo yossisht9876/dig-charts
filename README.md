@@ -130,19 +130,19 @@ the next set is to deploy the Prometheus stack
 
 then create a ServiceMonitor for your service to scarp it every X time:
 
-`apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: backend-service-monitor
-  namespace: monitoring
-spec:
-  selector:
-    matchLabels:
-      app: backend
-  endpoints:
-  - port: http
-    interval: 30s
-    path: /metrics`
+    apiVersion: monitoring.coreos.com/v1
+    kind: ServiceMonitor
+    metadata:
+      name: backend-service-monitor
+      namespace: monitoring
+    spec:
+      selector:
+        matchLabels:
+          app: backend
+      endpoints:
+      - port: http
+        interval: 30s
+        path: /metrics
 
 add target to promethus and create a relevent dashboard on grafana
 
