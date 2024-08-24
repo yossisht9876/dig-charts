@@ -4,7 +4,7 @@ description: An umbrella chart for backend, frontend, and Postgres
 version: 0.0.5
 dependencies:
   - name: backend-chart
-    version: 0.0.5
+    version: 0.0.2
     repository: "file://charts/backend-chart"
   - name: frontend-chart
     version: 0.0.5

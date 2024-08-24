@@ -1,6 +1,6 @@
 image:
   repository: yossisht11/digbackend
-  tag: "0.0.5"
+  tag: "0.0.2"
   pullPolicy: IfNotPresent
 service:
   type: ClusterIP
