@@ -99,13 +99,13 @@ using port-forward when the container is running :
 
 # monitoring:
 
-    for monitoring option solution Prometheus + grafana can be used:
+for monitoring option solution Prometheus + grafana can be used:
     
-    1 .prometheus_client added to the code in order to expose the metrics to the /metrics path
+1 .prometheus_client added to the code in order to expose the metrics to the /metrics path
     
     ![תמונה](https://github.com/user-attachments/assets/fd2398a7-9388-4563-a8de-41fd9b6b4322)
     
-    then from localhost/port/metrics
+then from localhost/port/metrics
 
 ![תמונה](https://github.com/user-attachments/assets/e3e141a2-a12d-405b-850d-e6b873743329)
 
@@ -114,9 +114,11 @@ the next set is to deploy the Prometheus stack
 
 ## Install Prometheus and Grafana
 
-`helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update`
+`helm repo add prometheus-community https://prometheus-community.github.io/helm-charts`
+
+`helm repo add grafana https://grafana.github.io/helm-charts`
+
+`helm repo update`
 
 ## Install Prometheus
 `helm install prometheus prometheus-community/prometheus --namespace monitoring`
