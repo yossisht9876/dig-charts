@@ -2,8 +2,8 @@
 
 ## Overview
 
-task containes 6 main folders:
-* .github/workflow: 
+# task containes 6 main folders:
+## .github/workflow: 
 
     contain the ci-cd yaml file:
     
@@ -13,22 +13,22 @@ task containes 6 main folders:
 
     Update the K8s cluster with new containers services - EKS or any other 
 
-* application:
+## application:
 
     contain the backend\frontend code with the dockerfile used to containerize the app services
 
-* charts:
+## charts:
 
     contain an umbrella chart that made up of 3 helm charts:
     backend
     frontend
     postgresql
 
-* ci-cd:
+## ci-cd:
   
     contain the github action yaml file - build/push/deploy
 
-* terraform:
+## terraform:
 
     contains few basic tf files to deploy the all infrastructure:
 
@@ -54,13 +54,13 @@ task containes 6 main folders:
 
   
 
-* private-docker-registry
+## private-docker-registry
 
   create a private-docker-registry with pvc to ensure the the images will 
 
   persist after restart
 
-* Usage:
+# Usage:
 
 There are few options to deploy the stack:
 
@@ -79,12 +79,12 @@ There are few options to deploy the stack:
 
 3. manualy
 
-* build / push the images:
+## build / push the images:
 
    `docker build -t <tagname>`
 
    `docker push <tagname>`
-* update the charts with the iamge tag and deploy using helm:
+## update the charts with the iamge tag and deploy using helm:
 
    `helm install dig . -n dig`
 
@@ -97,7 +97,7 @@ using port-forward when the container is running :
 
 
 
-* monitoring:
+# monitoring:
 
     for monitoring option solution Prometheus + grafana can be used:
     
@@ -112,19 +112,16 @@ using port-forward when the container is running :
 
 the next set is to deploy the Prometheus stack
 
-1. Install Prometheus and Grafana
+## Install Prometheus and Grafana
 
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add grafana https://grafana.github.io/helm-charts
 helm repo update
 
-# Create a monitoring namespace
-kubectl create namespace monitoring
-
-# Install Prometheus
+## Install Prometheus
 helm install prometheus prometheus-community/prometheus --namespace monitoring
 
-# Install Grafana
+## Install Grafana
 helm install grafana grafana/grafana --namespace monitoring
 
 then create a ServiceMonitor for your service to scarp it every X time:
