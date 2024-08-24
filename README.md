@@ -88,7 +88,8 @@ There are few options to deploy the stack:
 
    `helm install dig . -n dig`
 
-![image](https://github.com/user-attachments/assets/41050135-34ef-40fd-af4f-93f16c4bfaa4)
+![תמונה](https://github.com/user-attachments/assets/053c224c-0241-4850-b28c-1852108817b9)
+
 
 using port-forward when the container is running :
 
