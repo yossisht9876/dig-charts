@@ -1,21 +1,16 @@
 image:
-  repository: digbackend
-  tag: "0.0.2"
+  repository: yossisht11/digbackend
+  tag: "0.0.5"
   pullPolicy: IfNotPresent
-
 service:
   type: ClusterIP
   port: 5000
-
 resources: {}
-
 postgres:
   dbName: "dig"
-
 persistence:
   enabled: true
   accessModes:
     - ReadWriteOnce
   size: 8Gi
-  storageClass: "standard"
   mountPath: /var/lib/postgresql/data

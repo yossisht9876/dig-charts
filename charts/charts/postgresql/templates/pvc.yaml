@@ -1,11 +1,13 @@
+# charts/postgresql-chart/templates/pvc.yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: postgres-pvc
+  labels:
+    {{- include "postgresql-chart.labels" . | nindent 4 }}
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 8Gi
-  storageClassName: "standard"

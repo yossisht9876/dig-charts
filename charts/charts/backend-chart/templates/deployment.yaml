@@ -1,32 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "digfrontend.fullname" . }}
+  name: {{ include "digbackend.fullname" . }}
   labels:
-    {{- include "digfrontend.labels" . | nindent 4 }}
+    {{- include "digbackend.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      {{- include "digfrontend.selectorLabels" . | nindent 6 }}
+      {{- include "digbackend.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "digfrontend.selectorLabels" . | nindent 8 }}
+        {{- include "digbackend.selectorLabels" . | nindent 8 }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 80
+            - containerPort: 5000
           volumeMounts:
-            - name: data-volume
-              mountPath: {{ .Values.persistence.mountPath }}
+            - name: upload-volume
+              mountPath: /app/data/uploads
+            - name: postgres-pvc
+              mountPath: /var/lib/postgresql/data
           env:
             - name: POST_DB_NAME
               value: "{{ .Values.postgres.dbName }}"
-            - name: POST_PASSWORD
+            - name: POSTGRESQL_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: postgres-secret
@@ -37,6 +39,8 @@ spec:
                   name: postgres-secret
                   key: username
       volumes:
-        - name: data-volume
+        - name: upload-volume
+          emptyDir: {}
+        - name: postgres-pvc
           persistentVolumeClaim:
-            claimName: {{ include "digfrontend.fullname" . }}-pvc
+            claimName: postgres-pvc

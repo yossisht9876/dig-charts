@@ -1,0 +1,12 @@
+postgresql:
+  persistence:
+    enabled: true
+    storageClass: "gp2"  # Replace with your Kubernetes storage class
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+  service:
+    type: ClusterIP
+    port: 5432
+  postgres:
+    dbName: "dig"

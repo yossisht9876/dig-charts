@@ -1,14 +1,11 @@
 replicaCount: 1
-
 image:
-  repository: yossisht11/digfrontend:0.0.2
+  repository: yossisht11/digfrontend
   pullPolicy: IfNotPresent
-  tag: "latest"
-
+  tag: "0.0.5"
 service:
   type: LoadBalancer
   port: 80
-
 ingress:
   enabled: false
   annotations: {}
@@ -16,26 +13,21 @@ ingress:
     - host: digforntend.local
       paths: []
   tls: []
-
 resources: {}
 nodeSelector: {}
 tolerations: []
 affinity: []
-
 postgres:
   dbName: "dig"
-
 persistence:
   enabled: true
   accessMode: ReadWriteOnce
   size: 1Gi
-  mountPath: /data
-  storageClass: ""
-
-postgresql:
-  enabled: true
-  image: postgres:latest
-  persistence:
-    enabled: true
-    size: 1Gi
-    storageClass: ""
+  mountPath: /var/lib/postgresql/data
+# postgresql:
+#   enabled: true
+#   image: postgres:latest
+#   persistence:
+#     enabled: true
+#     size: 1Gi
+#     storageClass: ""
