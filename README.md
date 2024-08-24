@@ -7,9 +7,11 @@ task containes 6 main folders:
 
   contain the ci-cd yaml file:
   
-- Build each container service - with the DOCKERFILE
-- Deploy each image to the private registry - DOCKER-HUB
-- Update the K8s cluster with new containers services - EKS or any other 
+  Build each container service - with the DOCKERFILE
+
+  Deploy each image to the private registry - DOCKER-HUB
+
+  Update the K8s cluster with new containers services - EKS or any other 
 
 * application:
 
