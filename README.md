@@ -101,9 +101,7 @@ using port-forward when the container is running :
 
     for monitoring option solution Prometheus + grafana can be used:
     
-    1 . ajest the code in order to expose the metrics
-       
-    for example i added prometheus_client in order to expose the metrics to the /metrics path
+    1 .prometheus_client added to the code in order to expose the metrics to the /metrics path
     
     ![תמונה](https://github.com/user-attachments/assets/fd2398a7-9388-4563-a8de-41fd9b6b4322)
     
