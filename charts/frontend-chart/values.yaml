@@ -22,6 +22,9 @@ nodeSelector: {}
 tolerations: []
 affinity: []
 
+postgres:
+  dbName: "dig"
+
 persistence:
   enabled: true
   accessMode: ReadWriteOnce

@@ -25,6 +25,19 @@ spec:
               mountPath: /app/data/uploads
             - name: postgres-pvc
               mountPath: /var/lib/postgresql/data
+          env:
+            - name: POST_DB_NAME
+              value: "{{ .Values.postgres.dbName }}"
+            - name: POST_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: password
+            - name: POST_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: username
       volumes:
         - name: upload-volume
           emptyDir: {}

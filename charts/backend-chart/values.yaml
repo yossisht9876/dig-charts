@@ -1,13 +1,16 @@
 image:
   repository: digbackend
-  tag: "0.0.5"
+  tag: "0.0.2"
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
-  port: 80
+  type: ClusterIP
+  port: 5000
 
 resources: {}
+
+postgres:
+  dbName: "dig"
 
 persistence:
   enabled: true
