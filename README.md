@@ -30,7 +30,12 @@ task containes 6 main folders:
 
   contains few basic tf files to deploy the all infrastructure:
 
+
+  eks folder : 
+
   eks.tf - will create the eks cluster 
+
+  helm folder:
 
   helm.tf - another option that will deploy the helm charts using terraform
 
@@ -53,17 +58,31 @@ task containes 6 main folders:
 
 Usage:
 
-run the terraform stack to create the eks cluster
+few options to deploy the stack:
 
-run the ci-cd githb action that build the image 
+1. using terraform:
+
+run the terraform stack to create the eks cluster and deploy the helm 
+
+charts using terraform to the created eks cluster
+
+2. using github action
+
+run the ci-cd githb action that build the image ,
 
 then push it and last deploy the helm charts to the eks cluster.
 
-or
 
-run manualy from the charts folder :
+3. manualy
 
-`helm install dig . -n dig`
+* build / push the images:
+
+  `docker build -t <tagname>`
+
+  `docker push <tagname>`
+* update the charts with the iamge tag and deploy using helm:
+
+  `helm install dig . -n dig`
 
 ![image](https://github.com/user-attachments/assets/41050135-34ef-40fd-af4f-93f16c4bfaa4)
 
