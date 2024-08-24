@@ -96,13 +96,56 @@ using port-forward when the container is running :
 
 
 
-monitoring:
+* monitoring:
 
-for monitoring option solution promethus + grafana can be used:
+    for monitoring option solution Prometheus + grafana can be used:
+    
+    1 . ajest the code in order to expose the metrics
+       
+    for example i added prometheus_client in order to expose the metrics to the /metrics path
+    
+    ![תמונה](https://github.com/user-attachments/assets/fd2398a7-9388-4563-a8de-41fd9b6b4322)
+    
+    then from localhost/port/metrics
 
-1 . ajest the code in order to expose the metrics
-   
-   for example i added prometheus_client in order to expose the metrics to the /metrics path
+![תמונה](https://github.com/user-attachments/assets/e3e141a2-a12d-405b-850d-e6b873743329)
+
+
+the next set is to deploy the Prometheus stack
+
+1. Install Prometheus and Grafana
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+# Create a monitoring namespace
+kubectl create namespace monitoring
+
+# Install Prometheus
+helm install prometheus prometheus-community/prometheus --namespace monitoring
+
+# Install Grafana
+helm install grafana grafana/grafana --namespace monitoring
+
+then create a ServiceMonitor for your service to scarp it every X time:
+
+`apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: backend-service-monitor
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      app: backend
+  endpoints:
+  - port: http
+    interval: 30s
+    path: /metrics`
+
+add target to promethus and create a relevent dashboard on grafana
+
 
 
 
