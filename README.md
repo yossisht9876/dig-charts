@@ -3,46 +3,68 @@
 ## Overview
 
 task containes 6 main folders:
-* .github/workflow : 
+* .github/workflow: 
+
   contain the ci-cd yaml file:
+  
 - Build each container service - with the DOCKERFILE
 - Deploy each image to the private registry - DOCKER-HUB
 - Update the K8s cluster with new containers services - EKS or any other 
 
-* application
+* application:
+
   contain the backend\frontend code with the dockerfile used to containerize the app services
 
-* charts
+* charts:
+
   contain an umbrella chart that made up of 3 helm charts:
   backend
   frontend
   postgresql
 
-* ci-cd
+* ci-cd:
+  
   contain the github action yaml file - build/push/deploy
 
-* terraform
+* terraform:
+
   contains few basic tf files to deploy the all infrastructure:
+
   eks.tf - will create the eks cluster 
+
   helm.tf - another option that will deploy the helm charts using terraform
 
+  plan output:  (full output can be found in the terraform repo - tf-plan.txt)
+
+  eks:
+  
+  ![image](https://github.com/user-attachments/assets/a39005af-7a09-4a86-b558-b8d30a79d5f8)
+
+  helm:
+  
+  ![image](https://github.com/user-attachments/assets/4bb770b7-77cb-4137-94ab-deef053960dc)
+
+
+  
+
 * private-docker-registry
+
   create a private-docker-registry with pvc to ensure the the images will persist after restart
 
-usage:
+Usage:
 
 run the terraform stack to create the eks cluster
-run the ci-cd githb action to build/push and deploy the helm charts to the eks cluster
+
+run the ci-cd githb action that build the image 
+
+then push it and last deploy the helm charts to the eks cluster.
+
 or
-run manualy 
-helm install dig . -n dig from the charts folder
 
-![alt text](image.png)
+run manualy from the charts folder :
+
+`helm install dig . -n dig`
+
+![image](https://github.com/user-attachments/assets/41050135-34ef-40fd-af4f-93f16c4bfaa4)
 
 
-
-## Task details
-
-1. K8s cluster
-Create a Kubernetes cluster with your preferred method (EKS is the best option) To hold the application services
-Create a YAML for each of the application services.
