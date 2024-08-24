@@ -114,15 +114,15 @@ the next set is to deploy the Prometheus stack
 
 ## Install Prometheus and Grafana
 
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+`helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update
+helm repo update`
 
 ## Install Prometheus
-helm install prometheus prometheus-community/prometheus --namespace monitoring
+`helm install prometheus prometheus-community/prometheus --namespace monitoring`
 
 ## Install Grafana
-helm install grafana grafana/grafana --namespace monitoring
+`helm install grafana grafana/grafana --namespace monitoring`
 
 then create a ServiceMonitor for your service to scarp it every X time:
 
